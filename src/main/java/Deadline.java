@@ -4,6 +4,7 @@ public class Deadline extends Task{
     public Deadline(String description, String dueBy) {
         super(description);
         this.dueBy = dueBy;
+        this.taskType = "D";
     }
 
     public String getDueBy() {
@@ -11,6 +12,10 @@ public class Deadline extends Task{
     }
 
     public String getTaskType() {
-        return "D";
+        return taskType;
+    }
+
+    public void printTaskInfo() {
+        System.out.print("[" + this.taskType + "]" + " [" + this.isDone + "] " + this.description + "(by: " + this.dueBy + ")");
     }
 }
