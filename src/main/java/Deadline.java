@@ -3,8 +3,12 @@ public class Deadline extends Task{
 
     public Deadline(String description, String dueBy) {
         super(description);
-        this.dueBy = dueBy;
+        setDueBy(dueBy);
         this.taskType = "D";
+    }
+    public void setDueBy(String dueBy) {
+        String[] words = dueBy.split(" ", 2);
+        this.dueBy = words[1];
     }
 
     public String getDueBy() {
@@ -15,7 +19,8 @@ public class Deadline extends Task{
         return taskType;
     }
 
-    public void printTaskInfo() {
-        System.out.print("[" + this.taskType + "]" + " [" + this.isDone + "] " + this.description + "(by: " + this.dueBy + ")");
+    @Override
+    public String getTaskInformation() {
+        return super.getTaskInformation() + "(by: " + this.dueBy + ")";
     }
 }

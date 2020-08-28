@@ -75,30 +75,37 @@ public class Duke {
         int counter = 1;
         //loop to print all tasks
         for (Task t : tasks) {
-            System.out.println(counter + ". " + "[" + t.getStatus() + "] " + t.description);
+            System.out.println(counter + ". " + t.getTaskInformation());
             counter++;
         }
+        System.out.println("Can ywou doo all? UwU Bot would like two help! :3");
     }
 
     public static void commandDone(int taskNum) {
-        Task completedTask = tasks.get(taskNum);
+        Task completedTask = tasks.get(taskNum-1);
         completedTask.markAsDone();
         System.out.println("Niasu! I'we mwarked thwis task as done:\n[✓] " + completedTask.description);
+        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two doo");
     }
 
     public static void commandToDo(String taskInformation) {
         tasks.add(new ToDo(taskInformation));
-        
+        System.out.println("UwU looks like you have to " + taskInformation);
+        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two doo");
     }
 
     public static void commandDeadline(String taskInformation) {
         String[] taskInfo = taskInformation.split("/", 2);
         tasks.add(new Deadline(taskInfo[0], taskInfo[1]));
+        System.out.println("OwO looks like " + taskInfo[0] + "needs two be dwone " + taskInfo[1]);
+        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two doo");
     }
 
     public static void commandEvent(String taskInformation) {
         String[] taskInfo = taskInformation.split("/", 2);
         tasks.add(new Event(taskInfo[0], taskInfo[1]));
+        System.out.println("Nyaa " + taskInfo[0] + "is hwapeening on " + taskInfo[1] + " better rwemembwer!");
+        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two doo");
     }
 }
 
