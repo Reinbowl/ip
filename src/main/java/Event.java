@@ -4,6 +4,7 @@ public class Event extends Task{
     public Event(String description, String startAt) {
         super(description);
         this.startAt = startAt;
+        this.taskType = "E";
     }
 
     public String getStartAt() {
@@ -11,6 +12,6 @@ public class Event extends Task{
     }
 
     public String getTaskType() {
-        return "E";
+        return taskType;
     }
 }
