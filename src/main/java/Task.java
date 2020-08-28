@@ -8,7 +8,7 @@ public class Task {
     }
 
     public String getStatus() {
-        return (isDone) ? "✔" : "❌";
+        return (isDone) ? "✓" : "✕";
     }
 
     public void markAsDone() {
