@@ -27,6 +27,7 @@ public class Task {
         return totalTaskNotDone;
     }
 
+    //returns a formatted string containing all task information
     public String getTaskInformation() {
         return "[" + this.taskType + "]" + "[" + getStatus() + "] " + this.description;
     }

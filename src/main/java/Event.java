@@ -20,6 +20,7 @@ public class Event extends Task{
         return taskType;
     }
 
+    //returns a formatted string containing all task information
     @Override
     public String getTaskInformation() {
         return super.getTaskInformation() + "(at: " + this.startAt+ ")";
