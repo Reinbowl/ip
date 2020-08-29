@@ -78,7 +78,7 @@ public class Duke {
             System.out.println(counter + ". " + t.getTaskInformation());
             counter++;
         }
-        System.out.println("Can ywou doo all? UwU Bot would like two help! :3");
+        System.out.println("Can ywou doo all ? UwU Bot would like two help! :3");
     }
 
     public static void commandDone(int taskNum) {
