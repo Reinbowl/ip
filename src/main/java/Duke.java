@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Duke {
     public static final String line = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
-    public static List<Task> tasks = new ArrayList<Task>();     //make a list to store tasks
+    public static List<Task> tasks = new ArrayList<Task>();     //list to store tasks
 
     /*********************
      *       Main        *
@@ -25,8 +25,10 @@ public class Duke {
         }
     }
 
+    /*********************
+     *   Intro Message   *
+     *********************/
     private static void welcomeMessage() {
-        //UwU Bot introduction
         System.out.println(line);
         System.out.println("                Hewwo! I'm UwU Bot                 \n"
                           +"               （✿ ͡◕ ᴗ◕)つ━━✫・*。                  ");
@@ -78,34 +80,50 @@ public class Duke {
             System.out.println(counter + ". " + t.getTaskInformation());
             counter++;
         }
-        System.out.println("Can ywou doo all ? UwU Bot would like two help! :3");
+        System.out.println("Can ywou doo the " + Task.getTotalTaskNotDone() + " remaining task?\nUwU Bot would like two help! :3");
     }
 
+    /********************************************
+     * Command: done                            *
+     * input format: done (task number)         *
+     ********************************************/
     public static void commandDone(int taskNum) {
         Task completedTask = tasks.get(taskNum-1);
         completedTask.markAsDone();
         System.out.println("Niasu! I'we mwarked thwis task as done:\n[✓] " + completedTask.description);
-        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two doo");
+        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left to doo");
     }
 
+    /********************************************
+     * Command: todo                            *
+     * input format: todo (task)                *
+     ********************************************/
     public static void commandToDo(String taskInformation) {
         tasks.add(new ToDo(taskInformation));
         System.out.println("UwU looks like you have to " + taskInformation);
-        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two doo");
+        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left to doo");
     }
 
+    /********************************************
+     * Command: deadline                        *
+     * input format: deadline (task) /by (due)  *
+     ********************************************/
     public static void commandDeadline(String taskInformation) {
         String[] taskInfo = taskInformation.split("/", 2);
         tasks.add(new Deadline(taskInfo[0], taskInfo[1]));
         System.out.println("OwO looks like " + taskInfo[0] + "needs two be dwone " + taskInfo[1]);
-        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two doo");
+        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two do");
     }
 
+    /********************************************
+     * Command: event                           *
+     * input format: event (task) /at (date)    *
+     ********************************************/
     public static void commandEvent(String taskInformation) {
         String[] taskInfo = taskInformation.split("/", 2);
         tasks.add(new Event(taskInfo[0], taskInfo[1]));
         System.out.println("Nyaa " + taskInfo[0] + "is hwapeening on " + taskInfo[1] + " better rwemembwer!");
-        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two doo");
+        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two do");
     }
 }
 
