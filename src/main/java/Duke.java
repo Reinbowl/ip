@@ -4,19 +4,18 @@ import java.util.Scanner;
 
 public class Duke {
     public static final String line = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+    public static final Scanner input = new Scanner(System.in);
     public static List<Task> tasks = new ArrayList<Task>();     //list to store tasks
 
     /*********************
      *       Main        *
      *********************/
     public static void main(String[] args) {
-        final Scanner input = new Scanner(System.in);
-
         welcomeMessage();
 
         String userInput;
         //keeps looping for user input
-        while(true) {
+        while(input.hasNext()) {
             System.out.println(line);
             userInput = input.nextLine();
             userInput = userInput.trim();
@@ -122,7 +121,7 @@ public class Duke {
     public static void commandEvent(String taskInformation) {
         String[] taskInfo = taskInformation.split("/", 2);
         tasks.add(new Event(taskInfo[0], taskInfo[1]));
-        System.out.println("Nyaa " + taskInfo[0] + "is hwapeening on " + taskInfo[1] + " better rwemembwer!");
+        System.out.println("Nyaa " + taskInfo[0] + "is hwappening on " + taskInfo[1] + " better rwemembwer!");
         System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two do");
     }
 }
