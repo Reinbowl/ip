@@ -1,27 +1,42 @@
-public class Event extends Task{
+public class Event extends ToDo{
     protected String startAt;
 
+    /**
+     * Sets task's description and type to Event.
+     *
+     * @param description of task.
+     */
     public Event(String description, String startAt) {
         super(description);
         setStartAt(startAt);
-        this.taskType = "E";
+        setTaskType("E");
     }
 
+    /**
+     * Sets the task's start date/time.
+     *
+     * @param startAt task's date/time.
+     */
     public void setStartAt(String startAt) {
         this.startAt = startAt;
     }
 
+    /**
+     * Returns task's start date/time.
+     *
+     * @return task's start date/time.
+     */
     public String getStartAt() {
         return startAt;
     }
 
-    public String getTaskType() {
-        return taskType;
-    }
-
-    //returns a formatted string containing all task information
+    /**
+     * Returns a string representation of event type task.
+     *
+     * @return string representation of task.
+     */
     @Override
-    public String getTaskInformation() {
-        return super.getTaskInformation() + " (at: " + this.startAt+ ")";
+    public String toString() {
+        return super.toString() + " (at: " + this.startAt+ ")";
     }
 }
