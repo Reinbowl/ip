@@ -8,8 +8,7 @@ public class Event extends Task{
     }
 
     public void setStartAt(String startAt) {
-        String[] words = startAt.split(" ", 2);
-        this.startAt = words[1];
+        this.startAt = startAt;
     }
 
     public String getStartAt() {
@@ -23,6 +22,6 @@ public class Event extends Task{
     //returns a formatted string containing all task information
     @Override
     public String getTaskInformation() {
-        return super.getTaskInformation() + "(at: " + this.startAt+ ")";
+        return super.getTaskInformation() + " (at: " + this.startAt+ ")";
     }
 }

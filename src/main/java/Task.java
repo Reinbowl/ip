@@ -10,6 +10,10 @@ public class Task {
         totalTaskNotDone++;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public String getStatus() {
         return (isDone) ? "✓" : "✕";
     }

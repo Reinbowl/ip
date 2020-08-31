@@ -7,8 +7,7 @@ public class Deadline extends Task{
         this.taskType = "D";
     }
     public void setDueBy(String dueBy) {
-        String[] words = dueBy.split(" ", 2);
-        this.dueBy = words[1];
+        this.dueBy = dueBy;
     }
 
     public String getDueBy() {
@@ -22,6 +21,6 @@ public class Deadline extends Task{
     //returns a formatted string containing all task information
     @Override
     public String getTaskInformation() {
-        return super.getTaskInformation() + "(by: " + this.dueBy + ")";
+        return super.getTaskInformation() + " (by: " + this.dueBy + ")";
     }
 }
