@@ -1,8 +1,8 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                Hewwo! I'm UwU Bot                 
-               ?? ?? ??)?????*?
+                Hewwo! I'm UwU Bot
+              Hwere to hwelp you out
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-What can I dwo fwor ywu?
+What can I dwo fwor ywou?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 UwU looks like you have to borrow book
@@ -10,19 +10,36 @@ Ywou now have 1 tasks left to doo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Hwere is ywour list of tasks:
-1. [T][?] borrow book
+1. [T][✕] borrow book
 Can ywou doo the 1 remaining task?
-UwU Bot would like two help! :3
+UwU Bot would like two help!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 OwO looks like return book needs two be dwone by Sunday
 Ywou now have 2 tasks left two do
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Nyaa project meeting is hwapeening on at Mon 2-4pm better rwemembwer!
+Nyaa project meeting is hwappening on Mon 2-4pm better rwemembwer!
 Ywou now have 3 tasks left two do
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 OwO looks like do homework needs two be dwone by no idea :3
 Ywou now have 4 tasks left two do
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Niasu! I'we mwarked thwis task as done:
+[✓] return book
+Ywou now have 3 tasks left to doo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hwere is ywour list of tasks:
+1. [T][✕] borrow book
+2. [D][✓] return book (by: Sunday)
+3. [E][✕] project meeting (at: Mon 2-4pm)
+4. [D][✕] do homework (by: no idea :3)
+Can ywou doo the 3 remaining task?
+UwU Bot would like two help!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Bai Bai! See ywo swoon!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
