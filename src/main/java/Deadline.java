@@ -22,15 +22,6 @@ public class Deadline extends ToDo{
     }
 
     /**
-     * Returns task's deadline.
-     *
-     * @return task's deadline.
-     */
-    public String getDueBy() {
-        return dueBy;
-    }
-
-    /**
      * Returns a string representation of Deadline type task.
      *
      * @return string representation of task.
