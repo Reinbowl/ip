@@ -6,11 +6,17 @@ public class Duke {
     private static final String LINE = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
     private static final Scanner input = new Scanner(System.in);
 
+    private static final String COMMAND_BYE = "bye";
+    private static final String COMMAND_LIST = "list";
+    private static final String COMMAND_DONE = "done";
+    private static final String COMMAND_TODO = "todo";
+    private static final String COMMAND_DEADLINE = "deadline";
+    private static final String COMMAND_EVENT = "event";
+
     private static final List<Task> tasks = new ArrayList<Task>();
 
     public static void main(String[] args) {
         printWelcomeMessage();
-
         String userInput;
          do {
             System.out.println(LINE);
@@ -40,23 +46,23 @@ public class Duke {
     private static boolean executeUserCommand(String userInput) {
         String[] userWords = userInput.split(" ", 2);
         switch(userWords[0]) {
-        case "bye":
+        case COMMAND_BYE:
             executeCommandBye();
             return false;
-        case "list":
+        case COMMAND_LIST:
             executeCommandList();
             break;
-        case "done":
+        case COMMAND_DONE:
             int taskNum = Integer.parseInt(userWords[1]);
             executeCommandDone(taskNum);
             break;
-        case "todo":
+        case COMMAND_TODO:
             executeCommandToDo(userWords[1]);
             break;
-        case "deadline":
+        case COMMAND_DEADLINE:
             executeCommandDeadline(userWords[1]);
             break;
-        case "event":
+        case COMMAND_EVENT:
             executeCommandEvent(userWords[1]);
             break;
         default:
