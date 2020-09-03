@@ -22,15 +22,6 @@ public class Event extends ToDo{
     }
 
     /**
-     * Returns task's start date/time.
-     *
-     * @return task's start date/time.
-     */
-    public String getStartAt() {
-        return startAt;
-    }
-
-    /**
      * Returns a string representation of event type task.
      *
      * @return string representation of task.

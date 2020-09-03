@@ -8,13 +8,4 @@ public class ToDo extends Task {
         super(description);
         setTaskType("T");
     }
-
-    /**
-     * Returns task's type.
-     *
-     * @return task's type.
-     */
-    public String getTaskType() {
-        return taskType;
-    }
 }

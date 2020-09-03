@@ -3,30 +3,30 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Duke {
-    private static final String line = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+    private static final String LINE = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
     private static final Scanner input = new Scanner(System.in);
 
     private static final List<Task> tasks = new ArrayList<Task>();
 
     public static void main(String[] args) {
-        welcomeMessage();
+        printWelcomeMessage();
 
         String userInput;
          do {
-            System.out.println(line);
+            System.out.println(LINE);
             userInput = input.nextLine().trim();
-            System.out.println(line);
-        } while(userCommand(userInput));
+            System.out.println(LINE);
+        } while(executeUserCommand(userInput));
     }
 
     /**
      * Prints welcome message for the bot.
      */
-    private static void welcomeMessage() {
-        System.out.println(line);
+    private static void printWelcomeMessage() {
+        System.out.println(LINE);
         System.out.println("                Hewwo! I'm UwU Bot\n"
                           +"              Hwere to hwelp you out");
-        System.out.println(line);
+        System.out.println(LINE);
         System.out.println("What can I dwo fwor ywou?");
     }
 
@@ -37,27 +37,27 @@ public class Duke {
      * @param userInput user's input.
      * @return boolean value.
      */
-    private static boolean userCommand(String userInput) {
+    private static boolean executeUserCommand(String userInput) {
         String[] userWords = userInput.split(" ", 2);
         switch(userWords[0]) {
         case "bye":
-            commandBye();
+            executeCommandBye();
             return false;
         case "list":
-            commandList();
+            executeCommandList();
             break;
         case "done":
             int taskNum = Integer.parseInt(userWords[1]);
-            commandDone(taskNum);
+            executeCommandDone(taskNum);
             break;
         case "todo":
-            commandToDo(userWords[1]);
+            executeCommandToDo(userWords[1]);
             break;
         case "deadline":
-            commandDeadline(userWords[1]);
+            executeCommandDeadline(userWords[1]);
             break;
         case "event":
-            commandEvent(userWords[1]);
+            executeCommandEvent(userWords[1]);
             break;
         default:
             System.out.println("Invalid command");
@@ -68,15 +68,15 @@ public class Duke {
     /**
      * Prints bye message.
      */
-    private static void commandBye() {
+    private static void executeCommandBye() {
         System.out.println("Bai Bai! See ywo swoon!");
-        System.out.println(line);
+        System.out.println(LINE);
     }
 
     /**
      * Prints all task's type, status and description.
      */
-    private static void commandList() {
+    private static void executeCommandList() {
         if (Task.getTotalTaskNotDone() > 0) {
             System.out.println("Hwere is ywour list of tasks:");
             int counter = 1;
@@ -96,7 +96,7 @@ public class Duke {
      *
      * @param taskNum number of task to be marked as done.
      */
-    private static void commandDone(int taskNum) {
+    private static void executeCommandDone(int taskNum) {
         Task completedTask = tasks.get(taskNum-1);
         completedTask.markAsDone();
         System.out.println("Niasu! I'we mwarked thwis task as done:\n[✓] " + completedTask.getDescription());
@@ -109,7 +109,7 @@ public class Duke {
      *
      * @param taskInformation to be added.
      */
-    private static void commandToDo(String taskInformation) {
+    private static void executeCommandToDo(String taskInformation) {
         tasks.add(new ToDo(taskInformation));
         System.out.println("UwU looks like you have to " + taskInformation);
         System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left to doo");
@@ -121,7 +121,7 @@ public class Duke {
      *
      * @param taskInformation of task to be added.
      */
-    private static void commandDeadline(String taskInformation) {
+    private static void executeCommandDeadline(String taskInformation) {
         String[] taskInfo = taskInformation.split(" /by ", 2);
         tasks.add(new Deadline(taskInfo[0], taskInfo[1]));
         System.out.println("OwO looks like " + taskInfo[0] + " needs two be dwone by " + taskInfo[1]);
@@ -134,7 +134,7 @@ public class Duke {
      *
      * @param taskInformation of task to be added.
      */
-    private static void commandEvent(String taskInformation) {
+    private static void executeCommandEvent(String taskInformation) {
         String[] taskInfo = taskInformation.split(" /at ", 2);
         tasks.add(new Event(taskInfo[0], taskInfo[1]));
         System.out.println("Nyaa " + taskInfo[0] + " is hwappening on " + taskInfo[1] + " better rwemembwer!");
