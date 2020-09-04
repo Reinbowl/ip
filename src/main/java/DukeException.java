@@ -22,10 +22,13 @@ public class DukeException extends Exception {
         switch (e.getMessage()) {
         case TaskFormatException:
             System.out.println("Oopsie! I need the task infwormation!");
+            break;
         case DeadlineFormatException:
             System.out.println("Ayaya! The deadline task hwas no due date!");
+            break;
         case EventFormatException:
             System.out.println("Tuturu! When is the event hwappening?");
+            break;
         }
     }
 }
