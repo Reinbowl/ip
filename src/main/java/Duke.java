@@ -18,11 +18,11 @@ public class Duke {
     public static void main(String[] args) {
         printWelcomeMessage();
         String userInput;
-         do {
+        do {
             System.out.println(LINE);
             userInput = input.nextLine().trim();
             System.out.println(LINE);
-        } while(executeUserCommand(userInput));
+        } while (executeUserCommand(userInput));
     }
 
     /**
@@ -31,7 +31,7 @@ public class Duke {
     private static void printWelcomeMessage() {
         System.out.println(LINE);
         System.out.println("                Hewwo! I'm UwU Bot\n"
-                          +"              Hwere to hwelp you out");
+                + "              Hwere to hwelp you out");
         System.out.println(LINE);
         System.out.println("What can I dwo fwor ywou?");
     }
@@ -44,29 +44,40 @@ public class Duke {
      * @return boolean value.
      */
     private static boolean executeUserCommand(String userInput) {
-        String[] userWords = userInput.split(" ", 2);
-        switch(userWords[0]) {
+        //single word commands
+        switch (userInput) {
         case COMMAND_BYE:
             executeCommandBye();
             return false;
         case COMMAND_LIST:
             executeCommandList();
             break;
-        case COMMAND_DONE:
-            int taskNum = Integer.parseInt(userWords[1]);
-            executeCommandDone(taskNum);
-            break;
-        case COMMAND_TODO:
-            executeCommandToDo(userWords[1]);
-            break;
-        case COMMAND_DEADLINE:
-            executeCommandDeadline(userWords[1]);
-            break;
-        case COMMAND_EVENT:
-            executeCommandEvent(userWords[1]);
-            break;
-        default:
-            System.out.println("Invalid command");
+        }
+        //commands that requires an input
+        try {
+            String[] userWords = userInput.split(" ", 2);
+            switch (userWords[0]) {
+            case COMMAND_DONE:
+                executeCommandDone(userWords[1]);
+                break;
+            case COMMAND_TODO:
+                executeCommandToDo(userWords[1]);
+                break;
+            case COMMAND_DEADLINE:
+                executeCommandDeadline(userWords[1]);
+                break;
+            case COMMAND_EVENT:
+                executeCommandEvent(userWords[1]);
+                break;
+            default:
+                System.out.println("Awoo I don't undwerstand that command :<");
+            }
+        } catch (DukeException e) {
+            DukeException.handleDukeException(e);
+        } catch (NumberFormatException e) {
+            System.out.println("Plwease give me a number :(");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("That task nwumber is not in the list.");
         }
         return true;
     }
@@ -100,12 +111,17 @@ public class Duke {
      * Marks the task with the associated number as done and prints a message to indicate it.
      * Format is done [task number]
      *
-     * @param taskNum number of task to be marked as done.
+     * @param inputTaskNum number of task to be marked as done.
      */
-    private static void executeCommandDone(int taskNum) {
-        Task completedTask = tasks.get(taskNum-1);
+    private static void executeCommandDone(String inputTaskNum) {
+        int taskNum = Integer.parseInt(inputTaskNum);
+        Task completedTask = tasks.get(taskNum - 1);
+        if (completedTask.isDone()) {
+            System.out.println("That task is already dwone!");
+            return;
+        }
         completedTask.markAsDone();
-        System.out.println("Niasu! I'we mwarked thwis task as done:\n[✓] " + completedTask.getDescription());
+        System.out.println("Niasu! I'we mwarked thwis task as done:\n" + completedTask);
         System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left to doo");
     }
 
@@ -114,8 +130,12 @@ public class Duke {
      * Format is todo [task description]
      *
      * @param taskInformation to be added.
+     * @throws DukeException if task information is empty.
      */
-    private static void executeCommandToDo(String taskInformation) {
+    private static void executeCommandToDo(String taskInformation) throws DukeException {
+        if (taskInformation.isEmpty()) {
+            throw new DukeException(DukeException.TaskFormatException);
+        }
         tasks.add(new ToDo(taskInformation));
         System.out.println("UwU looks like you have to " + taskInformation);
         System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left to doo");
@@ -126,8 +146,14 @@ public class Duke {
      * Format is deadline [task description] /by [due date]
      *
      * @param taskInformation of task to be added.
+     * @throws DukeException if task information is empty or if due date is missing.
      */
-    private static void executeCommandDeadline(String taskInformation) {
+    private static void executeCommandDeadline(String taskInformation) throws DukeException {
+        if (taskInformation.isEmpty()) {
+            throw new DukeException(DukeException.TaskFormatException);
+        } else if (!taskInformation.contains("/by")) {
+            throw new DukeException(DukeException.DeadlineFormatException);
+        }
         String[] taskInfo = taskInformation.split(" /by ", 2);
         tasks.add(new Deadline(taskInfo[0], taskInfo[1]));
         System.out.println("OwO looks like " + taskInfo[0] + " needs two be dwone by " + taskInfo[1]);
@@ -139,8 +165,14 @@ public class Duke {
      * Format is event [task description] /at [date and time]
      *
      * @param taskInformation of task to be added.
+     * @throws DukeException if task information is empty or if date and time is missing.
      */
-    private static void executeCommandEvent(String taskInformation) {
+    private static void executeCommandEvent(String taskInformation) throws DukeException {
+        if (taskInformation.isEmpty()) {
+            throw new DukeException(DukeException.TaskFormatException);
+        } else if (!taskInformation.contains("/at")) {
+            throw new DukeException(DukeException.EventFormatException);
+        }
         String[] taskInfo = taskInformation.split(" /at ", 2);
         tasks.add(new Event(taskInfo[0], taskInfo[1]));
         System.out.println("Nyaa " + taskInfo[0] + " is hwappening on " + taskInfo[1] + " better rwemembwer!");
