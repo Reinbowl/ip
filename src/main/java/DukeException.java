@@ -21,7 +21,7 @@ public class DukeException extends Exception {
     public static void handleDukeException(Exception e) {
         switch (e.getMessage()) {
         case TaskFormatException:
-            System.out.println("Oopsie! I need the task infwormation!");
+            System.out.println("Oopsie! I need the task descrwiption!");
             break;
         case DeadlineFormatException:
             System.out.println("Ayaya! The deadline task hwas no due date!");
