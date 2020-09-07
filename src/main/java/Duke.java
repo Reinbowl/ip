@@ -69,11 +69,11 @@ public class Duke {
                 System.out.println("Awoo! I don't undwerstand that command :<");
             }
         } catch (DukeException e) {
-            DukeException.handleDukeException(e);
+            System.out.println(e);
         } catch (NumberFormatException e) {
             System.out.println("Plwease give me a number only :(");
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("That task nwumber is not in the list.");
+            System.out.println("I can't find that task nwumber in the list!");
         }
         return true;
     }
@@ -90,7 +90,7 @@ public class Duke {
      * Prints all task's type, status and description.
      */
     private static void executeCommandList() {
-        if (tasks.size() > 0) {
+        if (tasks.size() > 0 && Task.getTotalTaskNotDone() > 0) {
             System.out.println("Hwere is ywour list of tasks:");
             int counter = 1;
             for (Task t : tasks) {
@@ -100,7 +100,7 @@ public class Duke {
             System.out.println("Can ywou doo the " + Task.getTotalTaskNotDone() + " remaining task?\n" +
                     "UwU Bot would like two help!");
         } else {
-            System.out.println("Ywou have no tasks! Yay!");
+            System.out.println("Ywou have no tasks to doo! Yay!");
         }
     }
 
@@ -136,7 +136,7 @@ public class Duke {
      */
     private static void executeCommandToDo(String[] taskInformation) throws DukeException {
         if (taskInformation.length < 2) {
-            throw new DukeException(DukeException.TaskFormatException);
+            throw new DukeException("Task needs a descrwiption!");
         }
 
         tasks.add(new ToDo(taskInformation[1]));
@@ -153,15 +153,15 @@ public class Duke {
      */
     private static void executeCommandDeadline(String[] taskInformation) throws DukeException {
         if (taskInformation.length < 2) {
-            throw new DukeException(DukeException.TaskFormatException);
+            throw new DukeException("Deadline task needs a descrwiption and a dwue date/time!");
         } else if (!taskInformation[1].contains("/by")) {
-            throw new DukeException(DukeException.DeadlineFormatException);
+            throw new DukeException("Deadline task needs a dwue date/time!");
         }
         int byPos = taskInformation[1].indexOf("/by");
         if (taskInformation[1].substring(0, byPos).isBlank()) {
-            throw new DukeException(DukeException.TaskFormatException);
-        } else if (taskInformation[1].substring(byPos+3).isBlank()) {
-            throw new DukeException(DukeException.DeadlineFormatException);
+            throw new DukeException("Task needs a descrwiption!");
+        } else if (taskInformation[1].substring(byPos + 3).isBlank()) {
+            throw new DukeException("Deadline task needs a dwue date/time!");
         }
 
         String[] taskInfo = taskInformation[1].split(" /by ", 2);
@@ -179,15 +179,15 @@ public class Duke {
      */
     private static void executeCommandEvent(String[] taskInformation) throws DukeException {
         if (taskInformation.length < 2) {
-            throw new DukeException(DukeException.TaskFormatException);
+            throw new DukeException("Event task needs a descrwiption and a stwart date/time!");
         } else if (!taskInformation[1].contains("/at")) {
-            throw new DukeException(DukeException.EventFormatException);
+            throw new DukeException("Event task needs a stwart date/time!");
         }
         int atPos = taskInformation[1].indexOf("/at");
         if (taskInformation[1].substring(0, atPos).isBlank()) {
-            throw new DukeException(DukeException.TaskFormatException);
-        } else if (taskInformation[1].substring(atPos+3).isBlank()) {
-            throw new DukeException(DukeException.EventFormatException);
+            throw new DukeException("Task needs a descrwiption!");
+        } else if (taskInformation[1].substring(atPos + 3).isBlank()) {
+            throw new DukeException("Event task needs a stwart date/time!");
         }
 
         String[] taskInfo = taskInformation[1].split(" /at ", 2);
