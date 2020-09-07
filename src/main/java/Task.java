@@ -1,4 +1,4 @@
-public class Task {
+public abstract class Task {
     protected String description;
     protected String taskType;
     protected boolean isDone;
@@ -40,6 +40,15 @@ public class Task {
      */
     public String getDescription() {
         return description;
+    }
+
+    /**
+     * Returns task's done status.
+     *
+     * @return task's done status.
+     */
+    public boolean isDone() {
+        return isDone;
     }
 
     /**
