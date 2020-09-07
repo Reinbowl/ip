@@ -71,7 +71,7 @@ public class Duke {
         } catch (DukeException e) {
             System.out.println(e);
         } catch (NumberFormatException e) {
-            System.out.println("Plwease give me a number only :(");
+            System.out.println("Plwease give me a number :(");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("I can't find that task nwumber in the list!");
         }
@@ -136,7 +136,7 @@ public class Duke {
      */
     private static void executeCommandToDo(String[] taskInformation) throws DukeException {
         if (taskInformation.length < 2) {
-            throw new DukeException("Task needs a descrwiption!");
+            throw new DukeException("The twask needs a descrwiption!");
         }
 
         tasks.add(new ToDo(taskInformation[1]));
@@ -153,20 +153,20 @@ public class Duke {
      */
     private static void executeCommandDeadline(String[] taskInformation) throws DukeException {
         if (taskInformation.length < 2) {
-            throw new DukeException("Deadline task needs a descrwiption and a dwue date/time!");
+            throw new DukeException("Itz a deadline twask, theres no descrwiption and dwue date/time!");
         } else if (!taskInformation[1].contains("/by")) {
             throw new DukeException("Deadline task needs a dwue date/time!");
         }
         int byPos = taskInformation[1].indexOf("/by");
         if (taskInformation[1].substring(0, byPos).isBlank()) {
-            throw new DukeException("Task needs a descrwiption!");
+            throw new DukeException("Theres no task descrwiption!");
         } else if (taskInformation[1].substring(byPos + 3).isBlank()) {
-            throw new DukeException("Deadline task needs a dwue date/time!");
+            throw new DukeException("Ewvery deadline task needs a dwue date/time!");
         }
 
-        String[] taskInfo = taskInformation[1].split(" /by ", 2);
-        tasks.add(new Deadline(taskInfo[0], taskInfo[1]));
-        System.out.println("OwO looks like " + taskInfo[0] + " needs two be dwone by " + taskInfo[1]);
+        String[] taskDetails = taskInformation[1].split(" /by ", 2);
+        tasks.add(new Deadline(taskDetails[0], taskDetails[1]));
+        System.out.println("OwO looks like " + taskDetails[0] + " needs two be dwone by " + taskDetails[1]);
         System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two do");
     }
 
@@ -179,20 +179,20 @@ public class Duke {
      */
     private static void executeCommandEvent(String[] taskInformation) throws DukeException {
         if (taskInformation.length < 2) {
-            throw new DukeException("Event task needs a descrwiption and a stwart date/time!");
+            throw new DukeException("An event task is not one without a descrwiption and a stwart date/time!");
         } else if (!taskInformation[1].contains("/at")) {
             throw new DukeException("Event task needs a stwart date/time!");
         }
         int atPos = taskInformation[1].indexOf("/at");
         if (taskInformation[1].substring(0, atPos).isBlank()) {
-            throw new DukeException("Task needs a descrwiption!");
+            throw new DukeException("I can't fwind the task descrwiption!");
         } else if (taskInformation[1].substring(atPos + 3).isBlank()) {
-            throw new DukeException("Event task needs a stwart date/time!");
+            throw new DukeException("To add event task, I need a stwart date/time!");
         }
 
-        String[] taskInfo = taskInformation[1].split(" /at ", 2);
-        tasks.add(new Event(taskInfo[0], taskInfo[1]));
-        System.out.println("Nyaa " + taskInfo[0] + " is hwappening on " + taskInfo[1] + " better rwemembwer!");
+        String[] taskDetails = taskInformation[1].split(" /at ", 2);
+        tasks.add(new Event(taskDetails[0], taskDetails[1]));
+        System.out.println("Nyaa " + taskDetails[0] + " is hwappening on " + taskDetails[1] + " better rwemembwer!");
         System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two do");
     }
 }
