@@ -1,4 +1,4 @@
-public class Event extends ToDo{
+public class Event extends ToDo {
     protected String startAt;
 
     /**
@@ -28,6 +28,6 @@ public class Event extends ToDo{
      */
     @Override
     public String toString() {
-        return super.toString() + " (at: " + this.startAt+ ")";
+        return super.toString() + " (at: " + this.startAt + ")";
     }
 }
