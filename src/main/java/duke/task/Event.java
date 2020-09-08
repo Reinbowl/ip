@@ -1,8 +1,10 @@
+package duke.task;
+
 public class Event extends ToDo {
     protected String startAt;
 
     /**
-     * Sets task's description and type to Event.
+     * Sets task's description and type to duke.task.Event.
      *
      * @param description of task.
      */

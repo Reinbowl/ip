@@ -1,3 +1,10 @@
+package duke;
+
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Task;
+import duke.task.ToDo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,7 +20,7 @@ public class Duke {
     private static final String COMMAND_DEADLINE = "deadline";
     private static final String COMMAND_EVENT = "event";
 
-    private static final List<Task> tasks = new ArrayList<Task>();
+    private static final List<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
         printWelcomeMessage();
@@ -128,7 +135,7 @@ public class Duke {
     }
 
     /**
-     * Adds a new task of type 'ToDo'.
+     * Adds a new task of type 'duke.task.ToDo'.
      * Format is todo [task description]
      *
      * @param taskInformation to be added.
@@ -145,7 +152,7 @@ public class Duke {
     }
 
     /**
-     * Adds a new task of type 'Deadline'.
+     * Adds a new task of type 'duke.task.Deadline'.
      * Format is deadline [task description] /by [due date]
      *
      * @param taskInformation of task to be added.
@@ -155,7 +162,7 @@ public class Duke {
         if (taskInformation.length < 2) {
             throw new DukeException("Itz a deadline twask, theres no descrwiption and dwue date/time!");
         } else if (!taskInformation[1].contains("/by")) {
-            throw new DukeException("Deadline task needs a dwue date/time!");
+            throw new DukeException("duke.task.Deadline task needs a dwue date/time!");
         }
         int byPos = taskInformation[1].indexOf("/by");
         if (taskInformation[1].substring(0, byPos).isBlank()) {
@@ -171,7 +178,7 @@ public class Duke {
     }
 
     /**
-     * Adds a new task of type 'Event'.
+     * Adds a new task of type 'duke.task.Event'.
      * Format is event [task description] /at [date and time]
      *
      * @param taskInformation of task to be added.
@@ -181,7 +188,7 @@ public class Duke {
         if (taskInformation.length < 2) {
             throw new DukeException("An event task is not one without a descrwiption and a stwart date/time!");
         } else if (!taskInformation[1].contains("/at")) {
-            throw new DukeException("Event task needs a stwart date/time!");
+            throw new DukeException("duke.task.Event task needs a stwart date/time!");
         }
         int atPos = taskInformation[1].indexOf("/at");
         if (taskInformation[1].substring(0, atPos).isBlank()) {

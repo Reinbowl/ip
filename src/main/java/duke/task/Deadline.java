@@ -1,8 +1,10 @@
+package duke.task;
+
 public class Deadline extends ToDo {
     protected String dueBy;
 
     /**
-     * Sets task's description and type to Deadline.
+     * Sets task's description and type to duke.task.Deadline.
      *
      * @param description of task.
      */
@@ -22,7 +24,7 @@ public class Deadline extends ToDo {
     }
 
     /**
-     * Returns a string representation of Deadline type task.
+     * Returns a string representation of duke.task.Deadline type task.
      *
      * @return string representation of task.
      */

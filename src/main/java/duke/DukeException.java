@@ -1,3 +1,5 @@
+package duke;
+
 public class DukeException extends Exception {
     /**
      * Constructs a new exception with the message for cause of exception.
