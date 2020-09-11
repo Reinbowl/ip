@@ -6,7 +6,6 @@ import duke.task.Task;
 import duke.task.ToDo;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Duke {
@@ -16,11 +15,12 @@ public class Duke {
     private static final String COMMAND_BYE = "bye";
     private static final String COMMAND_LIST = "list";
     private static final String COMMAND_DONE = "done";
+    private static final String COMMAND_DELETE = "delete";
     private static final String COMMAND_TODO = "todo";
     private static final String COMMAND_DEADLINE = "deadline";
     private static final String COMMAND_EVENT = "event";
 
-    private static final List<Task> tasks = new ArrayList<>();
+    private static final ArrayList<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
         printWelcomeMessage();
@@ -62,6 +62,9 @@ public class Duke {
                 break;
             case COMMAND_DONE:
                 executeCommandDone(userWords);
+                break;
+            case COMMAND_DELETE:
+                executeCommandDelete(userWords);
                 break;
             case COMMAND_TODO:
                 executeCommandToDo(userWords);
@@ -135,7 +138,29 @@ public class Duke {
     }
 
     /**
-     * Adds a new task of type 'duke.task.ToDo'.
+     * Deletes the task with the associated number from the list and prints a message to indicate it.
+     * Format is delete [task number]
+     *
+     * @param inputTaskNum number of task to be deleted.
+     * @throws NumberFormatException if task number is missing from input or input is not a number.
+     */
+    private static void executeCommandDelete(String[] inputTaskNum) throws NumberFormatException {
+        if (inputTaskNum.length < 2) {
+            throw new NumberFormatException();
+        }
+
+        int taskNum = Integer.parseInt(inputTaskNum[1]);
+        Task taskToDelete = tasks.get(taskNum-1);
+        if (!taskToDelete.isDone()) {
+            taskToDelete.markAsDone();
+        }
+        tasks.remove(taskNum-1);
+        System.out.println("OwO guess it's bwye bwye to this task:\n" + taskToDelete);
+        System.out.println("Ywou now have " + tasks.size() + " twotal tasks in the list.");
+    }
+
+    /**
+     * Adds a new task of type 'ToDo'.
      * Format is todo [task description]
      *
      * @param taskInformation to be added.
@@ -152,7 +177,7 @@ public class Duke {
     }
 
     /**
-     * Adds a new task of type 'duke.task.Deadline'.
+     * Adds a new task of type 'Deadline'.
      * Format is deadline [task description] /by [due date]
      *
      * @param taskInformation of task to be added.
@@ -178,7 +203,7 @@ public class Duke {
     }
 
     /**
-     * Adds a new task of type 'duke.task.Event'.
+     * Adds a new task of type 'Event'.
      * Format is event [task description] /at [date and time]
      *
      * @param taskInformation of task to be added.
