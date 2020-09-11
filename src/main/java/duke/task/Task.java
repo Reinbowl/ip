@@ -73,7 +73,7 @@ public abstract class Task {
     /**
      * Decreases total number of task not done by one.
      */
-    private static void reduceTotalTaskNotDone() {
+    public static void reduceTotalTaskNotDone() {
         totalTaskNotDone--;
     }
 
