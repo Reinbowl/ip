@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class Duke {
     private static final String LINE = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
     private static final Scanner input = new Scanner(System.in);
+    private static final Save save = new Save();
 
     private static final String COMMAND_BYE = "bye";
     private static final String COMMAND_LIST = "list";
@@ -23,7 +24,7 @@ public class Duke {
     private static final ArrayList<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
-        printWelcomeMessage();
+        initialiseBot();
         String userInput;
         do {
             System.out.println(LINE);
@@ -35,10 +36,15 @@ public class Duke {
     /**
      * Prints welcome message for the bot.
      */
-    private static void printWelcomeMessage() {
+    private static void initialiseBot() {
         System.out.println(LINE);
         System.out.println("                Hewwo! I'm UwU Bot\n"
                 + "              Hwere to hwelp you out");
+        System.out.println(LINE);
+        if (save.locateSave()) {
+            tasks.addAll(save.loadSave());
+        }
+        System.out.println("Save file lwoaded!");
         System.out.println(LINE);
         System.out.println("What can I dwo fwor ywou?");
     }
