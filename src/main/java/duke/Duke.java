@@ -87,6 +87,7 @@ public class Duke {
         } catch (IndexOutOfBoundsException e) {
             System.out.println("I can't find that task nwumber in the list!");
         }
+        save.writeSave(tasks);
         return true;
     }
 

@@ -45,6 +45,15 @@ public abstract class Task {
     }
 
     /**
+     * Returns task's type.
+     *
+     * @return task's type.
+     */
+    public String getTaskType() {
+        return taskType;
+    }
+
+    /**
      * Returns task's done status.
      *
      * @return task's done status.
