@@ -31,6 +31,7 @@ public class Duke {
             userInput = input.nextLine().trim();
             System.out.println(LINE);
         } while (executeUserCommand(userInput));
+        save.closeSave();
     }
 
     /**
