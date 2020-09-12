@@ -39,13 +39,7 @@ public class Save {
         }
         saveFile = new File(SAVE_FILE_PATH);
         if (!saveFile.exists()) {
-            System.out.println("Lwooks like its your fwirst time using me! Making new save file...");
-            try {
-                formatter = new Formatter(SAVE_FILE_PATH);
-                System.out.println("Tuturu! Save file created!");
-            } catch (FileNotFoundException e) {
-                System.out.println("Save file not found!");
-            }
+            System.out.println("Lwooks like its your fwirst time using me! I will make a swave file!");
             return false;
         } else {
             System.out.println("UwU fwound your save file!");
@@ -120,5 +114,9 @@ public class Save {
             formatter.format("\n");
         }
         formatter.flush();
+    }
+
+    public void closeSave() {
+        formatter.close();
     }
 }
