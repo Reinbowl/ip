@@ -11,12 +11,10 @@ public class DukeException extends Exception {
     }
 
     /**
-     * Returns a string representation of exception.
+     * Prints string representation of exception.
      *
-     * @return string representation of exception.
      */
-    @Override
-    public String toString() {
-        return "Oww Nuu! " + this.getMessage();
+    public void printException() {
+        System.out.println("Oww Nuu! " + this.getMessage());
     }
 }
