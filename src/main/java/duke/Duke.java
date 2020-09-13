@@ -6,7 +6,6 @@ import duke.task.Task;
 import duke.task.ToDo;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Duke {
@@ -16,11 +15,12 @@ public class Duke {
     private static final String COMMAND_BYE = "bye";
     private static final String COMMAND_LIST = "list";
     private static final String COMMAND_DONE = "done";
+    private static final String COMMAND_DELETE = "delete";
     private static final String COMMAND_TODO = "todo";
     private static final String COMMAND_DEADLINE = "deadline";
     private static final String COMMAND_EVENT = "event";
 
-    private static final List<Task> tasks = new ArrayList<>();
+    private static final ArrayList<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
         printWelcomeMessage();
@@ -63,6 +63,9 @@ public class Duke {
             case COMMAND_DONE:
                 executeCommandDone(userWords);
                 break;
+            case COMMAND_DELETE:
+                executeCommandDelete(userWords);
+                break;
             case COMMAND_TODO:
                 executeCommandToDo(userWords);
                 break;
@@ -97,13 +100,15 @@ public class Duke {
      * Prints all task's type, status and description.
      */
     private static void executeCommandList() {
-        if (tasks.size() > 0 && Task.getTotalTaskNotDone() > 0) {
+        if (tasks.size() > 0) {
             System.out.println("Hwere is ywour list of tasks:");
             int counter = 1;
             for (Task t : tasks) {
                 System.out.println(counter + ". " + t);
                 counter++;
             }
+        }
+        if (Task.getTotalTaskNotDone() > 0) {
             System.out.println("Can ywou doo the " + Task.getTotalTaskNotDone() + " remaining task?\n" +
                     "UwU Bot would like two help!");
         } else {
@@ -116,14 +121,9 @@ public class Duke {
      * Format is done [task number]
      *
      * @param inputTaskNum number of task to be marked as done.
-     * @throws NumberFormatException if task number is missing from input or input is not a number.
      */
-    private static void executeCommandDone(String[] inputTaskNum) throws NumberFormatException {
-        if (inputTaskNum.length < 2) {
-            throw new NumberFormatException();
-        }
-
-        int taskNum = Integer.parseInt(inputTaskNum[1]);
+    private static void executeCommandDone(String[] inputTaskNum) {
+        int taskNum = getTaskNum(inputTaskNum);
         Task completedTask = tasks.get(taskNum - 1);
         if (completedTask.isDone()) {
             System.out.println("That task is already dwone!");
@@ -135,7 +135,38 @@ public class Duke {
     }
 
     /**
-     * Adds a new task of type 'duke.task.ToDo'.
+     * Deletes the task with the associated number from the list and prints a message to indicate it.
+     * Format is delete [task number]
+     *
+     * @param inputTaskNum number of task to be deleted.
+     */
+    private static void executeCommandDelete(String[] inputTaskNum) {
+        int taskNum = getTaskNum(inputTaskNum);
+        Task taskToDelete = tasks.get(taskNum-1);
+        if (!taskToDelete.isDone()) {
+            Task.reduceTotalTaskNotDone();
+        }
+        tasks.remove(taskNum-1);
+        System.out.println("OwO guess it's bwye bwye to this task:\n" + taskToDelete);
+        System.out.println("Ywou now have " + tasks.size() + " twotal tasks in the list.");
+    }
+
+    /**
+     * Verifies that user input contains a task number and extracts that task number.
+     *
+     * @param inputTaskNum user input that contains task number.
+     * @return task number as an int.
+     * @throws NumberFormatException if task number is missing from input or input is not a number.
+     */
+    private static int getTaskNum(String[] inputTaskNum) throws NumberFormatException {
+        if (inputTaskNum.length < 2) {
+            throw new NumberFormatException();
+        }
+        return Integer.parseInt(inputTaskNum[1]);
+    }
+
+    /**
+     * Adds a new task of type 'ToDo'.
      * Format is todo [task description]
      *
      * @param taskInformation to be added.
@@ -152,7 +183,7 @@ public class Duke {
     }
 
     /**
-     * Adds a new task of type 'duke.task.Deadline'.
+     * Adds a new task of type 'Deadline'.
      * Format is deadline [task description] /by [due date]
      *
      * @param taskInformation of task to be added.
@@ -162,7 +193,7 @@ public class Duke {
         if (taskInformation.length < 2) {
             throw new DukeException("Itz a deadline twask, theres no descrwiption and dwue date/time!");
         } else if (!taskInformation[1].contains("/by")) {
-            throw new DukeException("duke.task.Deadline task needs a dwue date/time!");
+            throw new DukeException("Deadline task needs a dwue date/time!");
         }
         int byPos = taskInformation[1].indexOf("/by");
         if (taskInformation[1].substring(0, byPos).isBlank()) {
@@ -178,7 +209,7 @@ public class Duke {
     }
 
     /**
-     * Adds a new task of type 'duke.task.Event'.
+     * Adds a new task of type 'Event'.
      * Format is event [task description] /at [date and time]
      *
      * @param taskInformation of task to be added.
@@ -188,7 +219,7 @@ public class Duke {
         if (taskInformation.length < 2) {
             throw new DukeException("An event task is not one without a descrwiption and a stwart date/time!");
         } else if (!taskInformation[1].contains("/at")) {
-            throw new DukeException("duke.task.Event task needs a stwart date/time!");
+            throw new DukeException("Event task needs a stwart date/time!");
         }
         int atPos = taskInformation[1].indexOf("/at");
         if (taskInformation[1].substring(0, atPos).isBlank()) {
