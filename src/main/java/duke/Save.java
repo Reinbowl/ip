@@ -13,10 +13,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Save {
-    private final String SAVE_FOLDER_PATH = "data";
-    private final String SAVE_FILE_PATH = "data/tasklist.txt";
+    private final String SAVE_FOLDER_PATH;
+    private final String SAVE_FILE_PATH;
 
     private File saveFile;
+
+    /**
+     * Sets the default path for the save folder and file.
+     *
+     * @param folder_path of the save folder.
+     * @param file_path   of the save file.
+     */
+    public Save(String folder_path, String file_path) {
+        this.SAVE_FOLDER_PATH = folder_path;
+        this.SAVE_FILE_PATH = file_path;
+    }
 
     /**
      * Finds if a save file exists and creates the save folder and file if there isn't one.
@@ -93,7 +104,7 @@ public class Save {
     }
 
     /**
-     * Writes the tasks in the ArrayList into a format that can be read when the save file is scanned.
+     * Writes the tasks in the ArrayList to the save file into a format that can be read when scanned.
      *
      * @param tasks ArrayList to be written into the save file.
      */
