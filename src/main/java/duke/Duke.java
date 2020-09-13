@@ -31,7 +31,6 @@ public class Duke {
             userInput = input.nextLine().trim();
             System.out.println(LINE);
         } while (executeUserCommand(userInput));
-        save.closeSave();
     }
 
     /**
@@ -86,7 +85,7 @@ public class Duke {
                 System.out.println("Awoo! I don't undwerstand that command :<");
             }
         } catch (DukeException e) {
-            System.out.println(e);
+            e.printException();
         } catch (NumberFormatException e) {
             System.out.println("Plwease give me a number :(");
         } catch (IndexOutOfBoundsException e) {

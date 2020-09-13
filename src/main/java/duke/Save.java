@@ -7,8 +7,9 @@ import duke.task.ToDo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.Scanner;
 
 public class Save {
@@ -16,7 +17,6 @@ public class Save {
     private final String SAVE_FILE_PATH = "data/tasklist.txt";
 
     private File saveFile;
-    private Formatter formatter;
 
     /**
      * Finds if a save file exists and creates the save folder and file if there isn't one.
@@ -38,13 +38,17 @@ public class Save {
             }
         }
         saveFile = new File(SAVE_FILE_PATH);
-        if (!saveFile.exists()) {
-            System.out.println("Lwooks like its your fwirst time using me! I will make a swave file!");
-            return false;
-        } else {
-            System.out.println("UwU fwound your save file!");
+        boolean doesSaveExist = saveFile.exists();
+        try {
+            if (saveFile.createNewFile()) {
+                System.out.println("Lwooks like its your fwirst time using me! I will make a swave file!");
+            } else {
+                System.out.println("UwU fwound your save file!");
+            }
+        } catch (IOException e) {
+            System.out.println("OwO Somethwing bad happen while making save!");
         }
-        return true;
+        return doesSaveExist;
     }
 
     /**
@@ -53,41 +57,39 @@ public class Save {
      * @return ArrayList containing tasks scanned from the save file.
      */
     public ArrayList<Task> loadSave() {
-        Scanner read = null;
+
         try {
-            read = new Scanner(saveFile);
-        } catch (FileNotFoundException e) {
-            System.out.println("Save file not found!");
-        }
-        ArrayList<Task> saveTasks = new ArrayList<>();
-        Task taskRead;
-        while (read.hasNextLine()) {
-            String[] saveRead = read.nextLine().split(",");
-            for (int i = 0; i < saveRead.length; i++) {
-                saveRead[i] = saveRead[i].trim();
-            }
-            switch (saveRead[0]) {
-            case "T":
-                taskRead = new ToDo(saveRead[2]);
-                break;
-            case "D":
-                taskRead = new Deadline(saveRead[2], saveRead[3]);
-                break;
-            case "E":
-                taskRead = new Event(saveRead[2], saveRead[3]);
-                if (saveRead[1].equals("1")) {
-                    break;
+            Scanner reader = new Scanner(saveFile);
+            ArrayList<Task> saveTasks = new ArrayList<>();
+            Task taskRead;
+            while (reader.hasNextLine()) {
+                String[] saveRead = reader.nextLine().split(",");
+                for (int i = 0; i < saveRead.length; i++) {
+                    saveRead[i] = saveRead[i].trim();
                 }
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + saveRead[0]);
+                switch (saveRead[0]) {
+                case "T":
+                    taskRead = new ToDo(saveRead[2]);
+                    break;
+                case "D":
+                    taskRead = new Deadline(saveRead[2], saveRead[3]);
+                    break;
+                case "E":
+                    taskRead = new Event(saveRead[2], saveRead[3]);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + saveRead[0]);
+                }
+                if (saveRead[1].equals("true")) {
+                    taskRead.markAsDone();
+                }
+                saveTasks.add(taskRead);
             }
-            if (saveRead[1].equals("true")) {
-                taskRead.markAsDone();
-            }
-            saveTasks.add(taskRead);
+            return saveTasks;
+        } catch (FileNotFoundException e) {
+            System.out.println("OwO Somethwing bad happen while loading save!");
+            return null;
         }
-        return saveTasks;
     }
 
     /**
@@ -97,26 +99,22 @@ public class Save {
      */
     public void writeSave(ArrayList<Task> tasks) {
         try {
-            formatter = new Formatter(SAVE_FILE_PATH);
-        } catch (FileNotFoundException e) {
-            System.out.println("Save file is missing!");
-        }
-        for (Task t : tasks) {
-            formatter.format("%s , %b , %s ", t.getTaskType(), t.isDone(), t.getDescription());
-            switch (t.getTaskType()) {
-            case "D":
-                formatter.format(", %s", ((Deadline) t).getDueBy());
-                break;
-            case "E":
-                formatter.format(" , %s", ((Event) t).getStartAt());
-                break;
+            FileWriter writer = new FileWriter(saveFile);
+            for (Task t : tasks) {
+                writer.append(String.format("%s , %b , %s ", t.getTaskType(), t.isDone(), t.getDescription()));
+                switch (t.getTaskType()) {
+                case "D":
+                    writer.append(String.format(", %s", ((Deadline) t).getDueBy()));
+                    break;
+                case "E":
+                    writer.append(String.format(" , %s", ((Event) t).getStartAt()));
+                    break;
+                }
+                writer.append("\n");
             }
-            formatter.format("\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("OwO Somethwing bad happen while writing to save!");
         }
-        formatter.flush();
-    }
-
-    public void closeSave() {
-        formatter.close();
     }
 }
