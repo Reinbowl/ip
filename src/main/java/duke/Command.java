@@ -111,10 +111,10 @@ public class Command {
      * Marks the task with the associated number as done and prints a message to indicate it.
      * Format is done [task number]
      *
-     * @param inputTaskNum number of task to be marked as done.
+     * @param taskNumInput number of task to be marked as done.
      */
-    private void executeCommandDone(String[] inputTaskNum) {
-        int taskNum = verifyTaskNumInput(inputTaskNum);
+    private void executeCommandDone(String[] taskNumInput) {
+        int taskNum = verifyTaskNumInput(taskNumInput);
         Task completedTask = tasks.get(taskNum - 1);
         if (completedTask.isDone()) {
             System.out.println("That task is already dwone!");
@@ -129,10 +129,10 @@ public class Command {
      * Deletes the task with the associated number from the list and prints a message to indicate it.
      * Format is delete [task number]
      *
-     * @param inputTaskNum number of task to be deleted.
+     * @param taskNumInput number of task to be deleted.
      */
-    private void executeCommandDelete(String[] inputTaskNum) {
-        int taskNum = verifyTaskNumInput(inputTaskNum);
+    private void executeCommandDelete(String[] taskNumInput) {
+        int taskNum = verifyTaskNumInput(taskNumInput);
         Task taskToDelete = tasks.get(taskNum - 1);
         if (!taskToDelete.isDone()) {
             Task.reduceTotalTaskNotDone();
