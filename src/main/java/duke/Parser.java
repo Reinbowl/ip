@@ -1,12 +1,7 @@
 package duke;
 
+import duke.command.*;
 import duke.command.Command;
-import duke.command.DeadlineCommand;
-import duke.command.DeleteCommand;
-import duke.command.DoneCommand;
-import duke.command.EventCommand;
-import duke.command.ListCommand;
-import duke.command.TodoCommand;
 
 public class Parser {
     private static final String COMMAND_BYE = "bye";
@@ -21,8 +16,7 @@ public class Parser {
         String[] userWords = userInput.split(" ", 2);
         switch (userWords[0]) {
         case COMMAND_BYE:
-            Command.exit();
-            break;
+            return new ByeCommand();
         case COMMAND_LIST:
             return new ListCommand();
         case COMMAND_DONE:
@@ -43,7 +37,6 @@ public class Parser {
         default:
             throw new DukeException("Awoo! I don't undwerstand that command :<");
         }
-        return null;
     }
 
     private static void verifyTaskNum(String[] input) throws DukeException {
