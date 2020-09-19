@@ -1,5 +1,6 @@
 package duke.task;
 
+import duke.DukeException;
 import duke.task.Task;
 
 import java.util.ArrayList;
@@ -23,7 +24,11 @@ public class TaskList {
         return tasks;
     }
 
-    public Task getTask(int taskNum) {
-        return tasks.get(taskNum-1);
+    public Task getTask(int taskNum) throws DukeException {
+        try {
+            return tasks.get(taskNum - 1);
+        } catch (IndexOutOfBoundsException e) {
+            throw new DukeException("I can't find that task nwumber in the list!");
+        }
     }
 }
