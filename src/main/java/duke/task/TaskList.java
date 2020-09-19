@@ -1,4 +1,4 @@
-package duke;
+package duke.task;
 
 import duke.task.Task;
 
@@ -21,5 +21,9 @@ public class TaskList {
 
     public ArrayList<Task> getTaskList() {
         return tasks;
+    }
+
+    public Task getTask(int taskNum) {
+        return tasks.get(taskNum-1);
     }
 }
