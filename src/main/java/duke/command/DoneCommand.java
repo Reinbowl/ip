@@ -1,6 +1,8 @@
 package duke.command;
 
-import duke.DukeException;
+import duke.exception.DukeException;
+import duke.ui.Ui;
+import duke.storage.Storage;
 import duke.task.Task;
 import duke.task.TaskList;
 
@@ -10,14 +12,15 @@ public class DoneCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks) throws DukeException {
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         int taskNum = Integer.parseInt(information);
         Task completedTask = tasks.getTask(taskNum);
-        if (completedTask.isDone()) {
+        if (!completedTask.isDone()) {
             completedTask.markAsDone();
         } else {
             throw new DukeException("That task is already dwone!");
         }
-        //print done from ui
+        ui.printDone(completedTask);
+        storage.write(tasks);
     }
 }

@@ -1,6 +1,8 @@
 package duke.command;
 
-import duke.task.Task;
+import duke.exception.DukeException;
+import duke.ui.Ui;
+import duke.storage.Storage;
 import duke.task.TaskList;
 import duke.task.ToDo;
 
@@ -10,8 +12,10 @@ public class TodoCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks) {
-        Task newTask = new ToDo(information);
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
+        ToDo newTask = new ToDo(information);
         tasks.addTask(newTask);
+        ui.printToDo(newTask);
+        storage.write(tasks);
     }
 }

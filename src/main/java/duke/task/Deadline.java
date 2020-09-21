@@ -4,7 +4,7 @@ public class Deadline extends ToDo {
     protected String dueBy;
 
     /**
-     * Sets task's description and type to duke.task.Deadline.
+     * Creates a new Deadline Task with the given description and set it's taskType to Deadline.
      *
      * @param description of task.
      */

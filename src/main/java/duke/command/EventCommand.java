@@ -1,7 +1,9 @@
 package duke.command;
 
+import duke.exception.DukeException;
+import duke.ui.Ui;
+import duke.storage.Storage;
 import duke.task.Event;
-import duke.task.Task;
 import duke.task.TaskList;
 
 public class EventCommand extends Command {
@@ -10,10 +12,11 @@ public class EventCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks) {
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         String[] taskDetails = information.split(" /at ", 2);
-        Task newTask = new Event(taskDetails[0], taskDetails[1]);
+        Event newTask = new Event(taskDetails[0], taskDetails[1]);
         tasks.addTask(newTask);
-        //print event
+        ui.printEvent(newTask);
+        storage.write(tasks);
     }
 }

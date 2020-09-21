@@ -1,5 +1,7 @@
 package duke.command;
 
+import duke.ui.Ui;
+import duke.storage.Storage;
 import duke.task.TaskList;
 
 public class ByeCommand extends Command {
@@ -8,8 +10,8 @@ public class ByeCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks) {
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
         Command.exit();
-        //print ui bye
+        ui.printBye();
     }
 }

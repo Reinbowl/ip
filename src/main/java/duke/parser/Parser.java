@@ -1,7 +1,14 @@
-package duke;
+package duke.parser;
 
-import duke.command.*;
+import duke.command.ByeCommand;
 import duke.command.Command;
+import duke.command.DeadlineCommand;
+import duke.command.DeleteCommand;
+import duke.command.DoneCommand;
+import duke.command.EventCommand;
+import duke.command.ListCommand;
+import duke.command.TodoCommand;
+import duke.exception.DukeException;
 
 public class Parser {
     private static final String COMMAND_BYE = "bye";
@@ -35,14 +42,14 @@ public class Parser {
             verifyEvent(userWords);
             return new EventCommand(userWords[1]);
         default:
-            throw new DukeException("Awoo! I don't undwerstand that command :<");
+            throw new DukeException("I don't undwerstand that command :<");
         }
     }
 
     private static void verifyTaskNum(String[] input) throws DukeException {
         try {
             Integer.parseInt(input[1]);
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new DukeException("Plwease give me one number :(");
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException("I need a twask number");

@@ -2,7 +2,7 @@ package duke.task;
 
 public class ToDo extends Task {
     /**
-     * Sets task's description and type to duke.task.ToDo.
+     * Creates a new Todo Task with the given description and set it's taskType ToDo.
      *
      * @param description of task.
      */

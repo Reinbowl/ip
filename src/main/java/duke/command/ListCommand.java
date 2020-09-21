@@ -1,9 +1,9 @@
 package duke.command;
 
-import duke.task.Task;
+import duke.exception.DukeException;
+import duke.ui.Ui;
+import duke.storage.Storage;
 import duke.task.TaskList;
-
-import java.util.ArrayList;
 
 public class ListCommand extends Command {
     public ListCommand() {
@@ -11,9 +11,7 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks) {
-        ArrayList<Task> taskArrayList = tasks.getTaskList();
-        //print all tasks using ui
-        //print total remaining task
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
+        ui.printList(tasks);
     }
 }

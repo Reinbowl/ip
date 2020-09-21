@@ -1,9 +1,10 @@
 package duke.storage;
 
-import duke.DukeException;
+import duke.exception.DukeException;
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Task;
+import duke.task.TaskList;
 import duke.task.ToDo;
 
 import java.io.File;
@@ -28,10 +29,8 @@ public class Storage {
             System.out.println("Save fwolder found! Finding save file...");
         } else {
             System.out.println("No folder to store the save file! Hwold on, I can make wone...");
-            if (storageFolder.mkdir()) {
-                System.out.println("Yay! We got a fwolder for the save file now!");
-            } else {
-                System.out.println("Oopsie! I fwailed to create a folder for the save file!");
+            if (!storageFolder.mkdir()) {
+                throw new DukeException("I fwailed to create a folder for the save file!");
             }
         }
         try {
@@ -84,7 +83,8 @@ public class Storage {
         storageTasks.add(task);
     }
 
-    public void write(ArrayList<Task> tasks) throws DukeException {
+    public void write(TaskList taskList) throws DukeException {
+        ArrayList<Task> tasks = taskList.getTaskList();
         try {
             FileWriter writer = new FileWriter(new File(FILE_PATH));
             writeTask(writer, tasks);
