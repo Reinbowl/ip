@@ -1,6 +1,8 @@
 package duke.task;
 
 public abstract class Task {
+    protected final String[] formatStrings = {"yyyy/M/d", "yyyy-M-d", "d/M/yy", "d-M-yy"};
+
     protected String description;
     protected String taskType;
     protected boolean isDone;
@@ -17,8 +19,6 @@ public abstract class Task {
     public Task(String description) {
         setDescription(description);
         this.isDone = false;
-        totalTask++;
-        totalTaskNotDone++;
     }
 
     /**
@@ -82,6 +82,14 @@ public abstract class Task {
     public void markAsDone() {
         this.isDone = true;
         reduceTotalTaskNotDone();
+    }
+
+    /**
+     * Increases total number of task and total task not done by one.
+     */
+    public static void increaseTotalTask() {
+        totalTask++;
+        totalTaskNotDone++;
     }
 
     /**

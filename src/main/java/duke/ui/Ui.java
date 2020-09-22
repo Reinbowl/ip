@@ -67,18 +67,17 @@ public class Ui {
     }
 
     public void printToDo(ToDo task) {
-        System.out.println("UwU looks like you have to " + task.getDescription());
+        System.out.println("UwU neww task to do:\n" + task);
         System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left to doo");
     }
 
     public void printDeadline(Deadline task) {
-        System.out.println("OwO looks like " + task.getDescription() + " needs two be dwone by " + task.getDueBy());
+        System.out.println("OwO new deadline twask added:\n" + task);
         System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two do");
     }
 
     public void printEvent(Event task) {
-        System.out.println("Nyaa " + task.getDescription() + " is hwappening on " + task.getStartAt() +
-                " better rwemembwer!");
+        System.out.println("Nyaa upcwoming event added:\n" + task);
         System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two do");
     }
 

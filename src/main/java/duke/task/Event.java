@@ -1,35 +1,60 @@
 package duke.task;
 
-public class Event extends ToDo {
-    protected String startAt;
+import duke.exception.DukeException;
+
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+public class Event extends Task {
+    protected LocalDate date;
+    protected LocalTime time;
 
     /**
      * Creates a new Event Task with the given description and set it's taskType to Event.
      *
      * @param description of task.
      */
-    public Event(String description, String startAt) {
+    public Event(String description, String startAt) throws DukeException {
         super(description);
-        setStartAt(startAt);
         setTaskType("E");
+        setDateTime(startAt);
+        increaseTotalTask();
     }
 
-    /**
-     * Sets the task's start date/time.
-     *
-     * @param startAt task's date/time.
-     */
-    public void setStartAt(String startAt) {
-        this.startAt = startAt;
+    private void setDateTime(String startAt) throws DukeException {
+        String[] datetime = startAt.split(" ", 2);
+        setDate(datetime[0]);
+        try {
+            setTime(datetime[1]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new DukeException("Did ywou forget the date or the time?");
+        }
     }
 
-    /**
-     * Returns the task's start date/time.
-     *
-     * @return task's date/time.
-     */
-    public String getStartAt() {
-        return startAt;
+    public void setDate(String date) throws DukeException {
+        for (String formatString : formatStrings) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formatString);
+            try {
+                this.date = LocalDate.parse(date, formatter);
+                return;
+            } catch (DateTimeException e) {
+            }
+        }
+        throw new DukeException("Swomething is wrong with the due date!");
+    }
+
+    public void setTime(String time) throws DukeException {
+        try {
+            this.time = LocalTime.parse(time);
+        } catch (DateTimeException e) {
+            throw new DukeException("Swomething is wrong with the time!");
+        }
+    }
+
+    public String getDateTime() {
+        return date + " " + time;
     }
 
     /**
@@ -39,6 +64,7 @@ public class Event extends ToDo {
      */
     @Override
     public String toString() {
-        return super.toString() + " (at: " + this.startAt + ")";
+        return super.toString() + " (at: " + date.format(DateTimeFormatter.ofPattern("d MMM yyyy")) + " " +
+                time.format(DateTimeFormatter.ofPattern("K:mm a")) + ")";
     }
 }
