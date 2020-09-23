@@ -81,6 +81,15 @@ public class Ui {
         System.out.println("Ywou now have " + taskList.getTotalTask() + " twotal tasks in the list.");
     }
 
+    public void printFind(TaskList taskList, String key) {
+        if (taskList.getTotalTask() > 0) {
+            System.out.println("Thwis are the tasks that match \"" + key + "\":");
+            printTaskList(taskList);
+        } else {
+            System.out.println("Thwere is no task that matches \"" + key + "\".");
+        }
+    }
+
     public void printBye() {
         System.out.println("Bai Bai! See ywo swoon!");
     }
