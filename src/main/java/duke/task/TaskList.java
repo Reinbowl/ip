@@ -64,4 +64,13 @@ public class TaskList {
             throw new DukeException("I can't find that task nwumber in the list!");
         }
     }
+
+    /**
+     * Returns the total number of tasks in the ArrayList.
+     *
+     * @return size of Task ArrayList.
+     */
+    public int getTotalTask() {
+        return tasks.size();
+    }
 }

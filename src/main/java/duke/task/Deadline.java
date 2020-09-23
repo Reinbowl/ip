@@ -1,35 +1,52 @@
 package duke.task;
 
-public class Deadline extends ToDo {
-    protected String dueBy;
+import duke.exception.DukeException;
+import duke.parser.DateTimeParser;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+public class Deadline extends Task {
+    protected LocalDate date;
+    protected LocalTime time;
 
     /**
      * Creates a new Deadline Task with the given description and set it's taskType to Deadline.
      *
      * @param description of task.
      */
-    public Deadline(String description, String dueBy) {
+    public Deadline(String description, String dueBy) throws DukeException {
         super(description);
-        setDueBy(dueBy);
         setTaskType("D");
+        setDateTime(dueBy);
+        increaseTotalTask();
     }
 
-    /**
-     * Sets the task's deadline.
-     *
-     * @param dueBy task's due date.
-     */
-    public void setDueBy(String dueBy) {
-        this.dueBy = dueBy;
+    private void setDateTime(String dueBy) throws DukeException {
+        String[] datetime = dueBy.split(" ", 2);
+        setDate(datetime[0]);
+        try {
+            setTime(datetime[1]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new DukeException("Did ywou forget the date or the time?");
+        }
     }
 
-    /**
-     * Returns the task's deadline.
-     *
-     * @return task's due date.
-     */
-    public String getDueBy() {
-        return dueBy;
+    public void setDate(String date) throws DukeException {
+        this.date = DateTimeParser.dateParser(date);
+    }
+
+    public void setTime(String time) throws DukeException {
+        this.time = DateTimeParser.timeParser(time);
+    }
+
+    public String getDateTime() {
+        return date + " " + time;
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 
     /**
@@ -39,6 +56,7 @@ public class Deadline extends ToDo {
      */
     @Override
     public String toString() {
-        return super.toString() + " (by: " + this.dueBy + ")";
+        return super.toString() + " (by: " + date.format(DateTimeFormatter.ofPattern("d MMM yyyy")) + " " +
+                time.format(DateTimeFormatter.ofPattern("K:mm a")) + ")";
     }
 }

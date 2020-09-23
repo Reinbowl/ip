@@ -15,7 +15,7 @@ public class TodoCommand extends Command {
     public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         ToDo newTask = new ToDo(information);
         tasks.addTask(newTask);
-        ui.printToDo(newTask);
+        ui.printToDo(tasks, newTask);
         storage.write(tasks);
     }
 }

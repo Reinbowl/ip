@@ -18,9 +18,8 @@ public class DeleteCommand extends Command {
         if (!removedTask.isDone()) {
             Task.reduceTotalTaskNotDone();
         }
-        Task.reduceTotalTask();
         tasks.deleteTask(taskNum);
-        ui.printDelete(removedTask);
+        ui.printDelete(tasks, removedTask);
         storage.write(tasks);
     }
 }

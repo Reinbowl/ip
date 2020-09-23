@@ -16,7 +16,7 @@ public class EventCommand extends Command {
         String[] taskDetails = information.split(" /at ", 2);
         Event newTask = new Event(taskDetails[0], taskDetails[1]);
         tasks.addTask(newTask);
-        ui.printEvent(newTask);
+        ui.printEvent(tasks, newTask);
         storage.write(tasks);
     }
 }

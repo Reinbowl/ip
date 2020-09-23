@@ -25,7 +25,7 @@ public class Parser {
         case COMMAND_BYE:
             return new ByeCommand();
         case COMMAND_LIST:
-            return new ListCommand();
+            return getTypeOfListCommand(userWords);
         case COMMAND_DONE:
             verifyTaskNum(userWords);
             return new DoneCommand(userWords[1]);
@@ -44,6 +44,13 @@ public class Parser {
         default:
             throw new DukeException("I don't undwerstand that command :<");
         }
+    }
+
+    private static Command getTypeOfListCommand(String[] input) throws DukeException {
+        if (input.length < 2) {
+            return new ListCommand();
+        }
+        return new ListCommand(DateTimeParser.dateParser(input[1]));
     }
 
     private static void verifyTaskNum(String[] input) throws DukeException {
@@ -66,7 +73,7 @@ public class Parser {
         if (input.length < 2) {
             throw new DukeException("Itz a deadline twask, theres no descrwiption and dwue date/time!");
         } else if (!input[1].contains("/by")) {
-            throw new DukeException("Deadline task needs a dwue date/time!");
+            throw new DukeException("Deadline task needs the fwormat /by dwue date");
         }
         int byPos = input[1].indexOf("/by");
         if (input[1].substring(0, byPos).isBlank()) {
@@ -80,7 +87,7 @@ public class Parser {
         if (input.length < 2) {
             throw new DukeException("An event task is not one without a descrwiption and a stwart date/time!");
         } else if (!input[1].contains("/at")) {
-            throw new DukeException("Event task needs a stwart date/time!");
+            throw new DukeException("Event task needs the fwormat /at stwart date");
         }
         int atPos = input[1].indexOf("/at");
         if (input[1].substring(0, atPos).isBlank()) {

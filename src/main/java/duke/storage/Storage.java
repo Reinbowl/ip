@@ -99,10 +99,10 @@ public class Storage {
             writer.append(String.format("%s , %b , %s ", t.getTaskType(), t.isDone(), t.getDescription()));
             switch (t.getTaskType()) {
             case "D":
-                writer.append(String.format(", %s", ((Deadline) t).getDueBy()));
+                writer.append(String.format(", %s", ((Deadline) t).getDateTime()));
                 break;
             case "E":
-                writer.append(String.format(" , %s", ((Event) t).getStartAt()));
+                writer.append(String.format(" , %s", ((Event) t).getDateTime()));
                 break;
             }
             writer.append("\n");
