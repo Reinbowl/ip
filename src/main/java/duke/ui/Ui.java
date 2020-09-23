@@ -19,7 +19,7 @@ public class Ui {
     }
 
     public String readInput() {
-        return scanner.nextLine();
+        return scanner.nextLine().trim();
     }
 
     public void printWelcome() {
