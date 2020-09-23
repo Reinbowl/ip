@@ -82,11 +82,11 @@ public class Ui {
     }
 
     public void printFind(TaskList taskList, String key) {
-        System.out.println("Thwis are the tasks that match \"" + key + "\":");
-        int counter = 1;
-        for (Task t : taskList.getTaskList()) {
-            System.out.println(counter + ". " + t);
-            counter++;
+        if (taskList.getTotalTask() > 0) {
+            System.out.println("Thwis are the tasks that match \"" + key + "\":");
+            printTaskList(taskList);
+        } else {
+            System.out.println("Thwere is no task that matches \"" + key + "\".");
         }
     }
 

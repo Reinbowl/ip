@@ -14,7 +14,7 @@ public class FindCommand extends Command {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         TaskList tasksFound = new TaskList();
-        for(Task t : tasks.getTaskList()) {
+        for (Task t : tasks.getTaskList()) {
             if (t.getDescription().contains(information)) {
                 tasksFound.addTask(t);
             }
