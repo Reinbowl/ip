@@ -1,14 +1,10 @@
 package duke.task;
 
 public abstract class Task {
-    protected final String[] dateformatStrings = {"yyyy/M/d", "yyyy-M-d", "d/M/yy", "d/M/yyyy", "d-M-yy", "d-M-yyyy"};
-    protected final String[] timeformatStrings = {"h:m a", "hhmm a", "H:m", "HHmm"};
-
     protected String description;
     protected String taskType;
     protected boolean isDone;
 
-    private static int totalTask = 0;
     private static int totalTaskNotDone = 0;
 
     /**
@@ -89,24 +85,7 @@ public abstract class Task {
      * Increases total number of task and total task not done by one.
      */
     public static void increaseTotalTask() {
-        totalTask++;
         totalTaskNotDone++;
-    }
-
-    /**
-     * Decreases total number of task by one.
-     */
-    public static void reduceTotalTask() {
-        totalTask--;
-    }
-
-    /**
-     * Returns total number of tasks.
-     *
-     * @return total number of tasks.
-     */
-    public static int getTotalTask() {
-        return totalTask;
     }
 
     /**

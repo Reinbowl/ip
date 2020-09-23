@@ -6,7 +6,8 @@ import duke.task.Task;
 import duke.task.TaskList;
 import duke.task.ToDo;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Ui {
@@ -31,54 +32,53 @@ public class Ui {
     }
 
     public void printList(TaskList taskList) {
-        printTaskList(taskList);
-        printTotalTaskNotDone();
-    }
-
-    private void printTaskList(TaskList taskList) {
-        ArrayList<Task> tasks = taskList.getTaskList();
-        if (tasks.size() > 0) {
-            System.out.println("Hwere is ywour list of " + Task.getTotalTask() + " tasks:");
-            int counter = 1;
-            for (Task t : tasks) {
-                System.out.println(counter + ". " + t);
-                counter++;
-            }
-        }
-    }
-
-    private void printTotalTaskNotDone() {
-        if (Task.getTotalTaskNotDone() > 0) {
-            System.out.println("Can ywou doo the " + Task.getTotalTaskNotDone() + " remaining task?\n" +
-                    "UwU Bot would like two help!");
+        if (taskList.getTotalTask() > 0) {
+            System.out.println("Hwere is ywour list of " + taskList.getTotalTask() + " tasks:");
+            printTaskList(taskList);
         } else {
             System.out.println("Ywou have no tasks to doo! Yay!");
         }
     }
 
+    public void printListOnDate(TaskList taskList, LocalDate date) {
+        if (taskList.getTotalTask() > 0) {
+            System.out.println("All thwis task are on " + date.format(DateTimeFormatter.ofPattern("d MMM yyyy")) + ":");
+            printTaskList(taskList);
+        } else {
+            System.out.println("Ywou have no tasks on " + date.format(DateTimeFormatter.ofPattern("d MMM yyyy")) + "!");
+        }
+    }
+
+    private void printTaskList(TaskList taskList) {
+        int counter = 1;
+        for (Task t : taskList.getTaskList()) {
+            System.out.println(counter + ". " + t);
+            counter++;
+        }
+    }
+
     public void printDone(Task task) {
         System.out.println("Niasu! I'we mwarked thwis task as done:\n" + task);
-        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left to doo");
     }
 
-    public void printDelete(Task task) {
+    public void printDelete(TaskList taskList, Task task) {
         System.out.println("OwO guess it's bwye bwye to this task:\n" + task);
-        System.out.println("Ywou now have " + Task.getTotalTask() + " twotal tasks in the list.");
+        System.out.println("Ywou now have " + taskList.getTotalTask() + " twotal tasks in the list.");
     }
 
-    public void printToDo(ToDo task) {
+    public void printToDo(TaskList taskList, ToDo task) {
         System.out.println("UwU neww task to do:\n" + task);
-        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left to doo");
+        System.out.println("Ywou now have " + taskList.getTotalTask() + " twotal tasks in the list.");
     }
 
-    public void printDeadline(Deadline task) {
+    public void printDeadline(TaskList taskList, Deadline task) {
         System.out.println("OwO new deadline twask added:\n" + task);
-        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two do");
+        System.out.println("Ywou now have " + taskList.getTotalTask() + " twotal tasks in the list.");
     }
 
-    public void printEvent(Event task) {
+    public void printEvent(TaskList taskList, Event task) {
         System.out.println("Nyaa upcwoming event added:\n" + task);
-        System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two do");
+        System.out.println("Ywou now have " + taskList.getTotalTask() + " twotal tasks in the list.");
     }
 
     public void printBye() {
