@@ -1,13 +1,6 @@
 package duke.parser;
 
-import duke.command.ByeCommand;
-import duke.command.Command;
-import duke.command.DeadlineCommand;
-import duke.command.DeleteCommand;
-import duke.command.DoneCommand;
-import duke.command.EventCommand;
-import duke.command.ListCommand;
-import duke.command.TodoCommand;
+import duke.command.*;
 import duke.exception.DukeException;
 
 public class Parser {
@@ -18,6 +11,7 @@ public class Parser {
     private static final String COMMAND_TODO = "todo";
     private static final String COMMAND_DEADLINE = "deadline";
     private static final String COMMAND_EVENT = "event";
+    private static final String COMMAND_FIND = "find";
 
     public static Command parse(String userInput) throws DukeException {
         String[] userWords = userInput.split(" ", 2);
@@ -41,6 +35,9 @@ public class Parser {
         case COMMAND_EVENT:
             verifyEvent(userWords);
             return new EventCommand(userWords[1]);
+        case COMMAND_FIND:
+            verifyFind(userWords);
+            return new FindCommand(userWords[1]);
         default:
             throw new DukeException("I don't undwerstand that command :<");
         }
@@ -87,6 +84,12 @@ public class Parser {
             throw new DukeException("I can't fwind the task descrwiption!");
         } else if (input[1].substring(atPos + 3).isBlank()) {
             throw new DukeException("To add event task, I need a stwart date/time!");
+        }
+    }
+
+    private static void verifyFind(String[] input) throws DukeException {
+        if(input.length < 2) {
+            throw new DukeException("I nweed somethwing to find!");
         }
     }
 }

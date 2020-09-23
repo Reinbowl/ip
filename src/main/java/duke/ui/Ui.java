@@ -82,6 +82,15 @@ public class Ui {
         System.out.println("Ywou now have " + Task.getTotalTaskNotDone() + " tasks left two do");
     }
 
+    public void printFind(TaskList taskList, String key) {
+        System.out.println("Thwis are the tasks that match \"" + key + "\":");
+        int counter = 1;
+        for (Task t : taskList.getTaskList()) {
+            System.out.println(counter + ". " + t);
+            counter++;
+        }
+    }
+
     public void printBye() {
         System.out.println("Bai Bai! See ywo swoon!");
     }
