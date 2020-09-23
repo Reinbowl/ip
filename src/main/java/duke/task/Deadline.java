@@ -34,23 +34,28 @@ public class Deadline extends Task {
     }
 
     public void setDate(String date) throws DukeException {
-        for (String formatString : formatStrings) {
+        for (String formatString : dateformatStrings) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formatString);
             try {
                 this.date = LocalDate.parse(date, formatter);
                 return;
-            } catch (DateTimeException e) {
+            } catch (DateTimeException ignored) {
             }
         }
         throw new DukeException("Swomething is wrong with the due date!");
     }
 
     public void setTime(String time) throws DukeException {
-        try {
-            this.time = LocalTime.parse(time);
-        } catch (DateTimeException e) {
-            throw new DukeException("Swomething is wrong with the time!");
+        time = time.toUpperCase();
+        for (String formatString : timeformatStrings) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formatString);
+            try {
+                this.time = LocalTime.parse(time, formatter);
+                return;
+            } catch (DateTimeException ignored) {
+            }
         }
+        throw new DukeException("Swomething is wrong with the time!");
     }
 
     public String getDateTime() {

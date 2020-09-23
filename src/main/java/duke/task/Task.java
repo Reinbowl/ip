@@ -1,7 +1,8 @@
 package duke.task;
 
 public abstract class Task {
-    protected final String[] formatStrings = {"yyyy/M/d", "yyyy-M-d", "d/M/yy", "d-M-yy"};
+    protected final String[] dateformatStrings = {"yyyy/M/d", "yyyy-M-d", "d/M/yy", "d/M/yyyy", "d-M-yy", "d-M-yyyy"};
+    protected final String[] timeformatStrings = {"h:m a", "hhmm a", "H:m", "HHmm"};
 
     protected String description;
     protected String taskType;
