@@ -5,7 +5,6 @@ public abstract class Task {
     protected String taskType;
     protected boolean isDone;
 
-    private static int totalTask = 0;
     private static int totalTaskNotDone = 0;
 
     /**
@@ -17,8 +16,6 @@ public abstract class Task {
     public Task(String description) {
         setDescription(description);
         this.isDone = false;
-        totalTask++;
-        totalTaskNotDone++;
     }
 
     /**
@@ -85,19 +82,10 @@ public abstract class Task {
     }
 
     /**
-     * Decreases total number of task by one.
+     * Increases total number of task and total task not done by one.
      */
-    public static void reduceTotalTask() {
-        totalTask--;
-    }
-
-    /**
-     * Returns total number of tasks.
-     *
-     * @return total number of tasks.
-     */
-    public static int getTotalTask() {
-        return totalTask;
+    public static void increaseTotalTask() {
+        totalTaskNotDone++;
     }
 
     /**

@@ -16,7 +16,7 @@ public class DeadlineCommand extends Command {
         String[] taskDetails = information.split(" /by ", 2);
         Deadline newTask = new Deadline(taskDetails[0], taskDetails[1]);
         tasks.addTask(newTask);
-        ui.printDeadline(newTask);
+        ui.printDeadline(tasks, newTask);
         storage.write(tasks);
     }
 }
