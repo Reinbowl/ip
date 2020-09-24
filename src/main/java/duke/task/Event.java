@@ -12,7 +12,7 @@ public class Event extends Task {
     protected LocalTime time;
 
     /**
-     * Creates a new Event Task with the given description and set it's taskType to Event.
+     * Creates a new Deadline Task with the given description, date, time and set it's taskType to Deadline.
      *
      * @param description of task.
      */
@@ -20,7 +20,6 @@ public class Event extends Task {
         super(description);
         setTaskType("E");
         setDateTime(startAt);
-        increaseTotalTask();
     }
 
     private void setDateTime(String startAt) throws DukeException {
@@ -33,24 +32,46 @@ public class Event extends Task {
         }
     }
 
+    /**
+     * Sets the date of the task to the given date.
+     *
+     * @param date to set to.
+     * @throws DukeException if date fails to parse.
+     */
     public void setDate(String date) throws DukeException {
         this.date = DateTimeParser.dateParser(date);
     }
 
+    /**
+     * Sets the time of the task to the given time.
+     *
+     * @param time to set to.
+     * @throws DukeException if time fails to parse.
+     */
     public void setTime(String time) throws DukeException {
         this.time = DateTimeParser.timeParser(time);
     }
 
+    /**
+     * Returns a string representation of task date and time.
+     *
+     * @return string representation of task date and time.
+     */
     public String getDateTime() {
         return date + " " + time;
     }
 
+    /**
+     * Returns the task date as a LocalDate object.
+     *
+     * @return LocalDate object containing task date.
+     */
     public LocalDate getDate() {
         return date;
     }
 
     /**
-     * Returns a string representation of event type task.
+     * Returns a string representation of task in the format [taskType] [done status] description (at: date time).
      *
      * @return string representation of task.
      */

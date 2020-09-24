@@ -7,6 +7,12 @@ import duke.task.TaskList;
 import duke.ui.Ui;
 
 public class FindCommand extends Command {
+    /**
+     * Creates a new FindCommand to execute with the given information to search for in the task list.
+     * Format is find [key]
+     *
+     * @param information the key to search for.
+     */
     public FindCommand(String information) {
         super(information);
     }
