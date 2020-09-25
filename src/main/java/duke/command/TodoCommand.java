@@ -7,6 +7,12 @@ import duke.task.TaskList;
 import duke.task.ToDo;
 
 public class TodoCommand extends Command {
+    /**
+     * Creates a new ToDoCommand to execute with the given information for new todo task.
+     * Format is todo [description]
+     *
+     * @param information of the todo task to add.
+     */
     public TodoCommand(String information) {
         super(information);
     }

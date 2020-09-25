@@ -21,8 +21,16 @@ public class Parser {
     private static final String COMMAND_EVENT = "event";
     private static final String COMMAND_FIND = "find";
 
-    public static Command parse(String userInput) throws DukeException {
-        String[] userWords = userInput.split(" ", 2);
+    /**
+     * Parses the given user input for the command and verify that the command has the right format and information
+     * before returning a command to execute.
+     *
+     * @param input to parse.
+     * @return Command object to execute.
+     * @throws DukeException if invalid command or invalid input for command.
+     */
+    public static Command parse(String input) throws DukeException {
+        String[] userWords = input.split(" ", 2);
         switch (userWords[0]) {
         case COMMAND_BYE:
             return new ByeCommand();
@@ -51,6 +59,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Checks whether the given input has a specified date to list.
+     *
+     * @param input with list command.
+     * @return ListCommand object to execute.
+     * @throws DukeException if invalid date format.
+     */
     private static Command getTypeOfListCommand(String[] input) throws DukeException {
         if (input.length < 2) {
             return new ListCommand();

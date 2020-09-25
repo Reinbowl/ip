@@ -12,6 +12,11 @@ public class Duke {
     private TaskList tasks;
     private final Ui ui;
 
+    /**
+     * Creates a new Duke bot with save file location as the given path.
+     *
+     * @param filePath of save file.
+     */
     public Duke(String filePath) {
         ui = new Ui();
         try {
@@ -23,6 +28,9 @@ public class Duke {
         }
     }
 
+    /**
+     * Run the Duke bot.
+     */
     public void run() {
         ui.printWelcome();
         boolean isExit = false;

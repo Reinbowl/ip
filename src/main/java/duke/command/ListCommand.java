@@ -13,11 +13,21 @@ import java.time.LocalDate;
 public class ListCommand extends Command {
     private LocalDate date;
 
+    /**
+     * Creates a new ListCommand to execute that prints out all task in the task list.
+     * Format is list
+     */
     public ListCommand() {
         super(null);
         date = null;
     }
 
+    /**
+     * Creates a new ListCommand to execute that prints out all task in the task list that fall on the given date.
+     * Format is list [date]
+     *
+     * @param date of tasks to list out.
+     */
     public ListCommand(LocalDate date) {
         super(null);
         this.date = date;

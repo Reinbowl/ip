@@ -7,6 +7,14 @@ import duke.task.Event;
 import duke.task.TaskList;
 
 public class EventCommand extends Command {
+    /**
+     * Creates a new EventCommand to execute with the given information for new event task.
+     * Format is event [description] /at [date] [time]
+     * Acceptable date format is dd/mm/yy, yyyy/mm/dd, slashes can be replace with dashes.
+     * Acceptable time format is both 12 hour and 24 hour, omitting colon requires the format hhmm.
+     *
+     * @param information of the event task to add.
+     */
     public EventCommand(String information) {
         super(information);
     }

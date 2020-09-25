@@ -5,11 +5,8 @@ public abstract class Task {
     protected String taskType;
     protected boolean isDone;
 
-    private static int totalTaskNotDone = 0;
-
     /**
-     * Creates a new task with the given description, default its done status to false and increase both the total
-     * number of task and total number of task not done.
+     * Creates a new task with the given description and default its done status to false.
      *
      * @param description of task.
      */
@@ -78,34 +75,10 @@ public abstract class Task {
      */
     public void markAsDone() {
         this.isDone = true;
-        reduceTotalTaskNotDone();
     }
 
     /**
-     * Increases total number of task and total task not done by one.
-     */
-    public static void increaseTotalTask() {
-        totalTaskNotDone++;
-    }
-
-    /**
-     * Decreases total number of task not done by one.
-     */
-    public static void reduceTotalTaskNotDone() {
-        totalTaskNotDone--;
-    }
-
-    /**
-     * Returns total number of tasks not done.
-     *
-     * @return total number of tasks not done.
-     */
-    public static int getTotalTaskNotDone() {
-        return totalTaskNotDone;
-    }
-
-    /**
-     * Returns a string representation of task.
+     * Returns a string representation of task in the format [taskType] [done status] description.
      *
      * @return string representation of task.
      */
