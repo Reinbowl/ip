@@ -35,8 +35,13 @@ public class Ui {
      */
     public void printWelcome() {
         showLine();
-        System.out.println("                Hewwo! I'm UwU Bot\n"
-                + "              Hwere to hwelp you out");
+        System.out.println("Hewwo! I'm UwU Bot\n"  +
+                "###      ###                  ###      ###\n" +
+                "###      ###                  ###      ###\n" +
+                "###      ###  ###        ###  ###      ###\n" +
+                "###      ###  ###   ##   ###  ###      ###\n" +
+                " ##########   ###  ####  ###   ########## \n" +
+                "  ########     #####  #####     ########  \n");
         showLine();
         System.out.println("What can I dwo fwor ywou?");
         showLine();
