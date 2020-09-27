@@ -8,7 +8,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class DateTimeParser {
-    private static final String[] dateformatStrings = {"yyyy/M/d", "yyyy-M-d", "d/M/yy", "d/M/yyyy", "d-M-yy", "d-M-yyyy"};
+    private static final String[] dateformatStrings = {"yyyy/M/d", "yyyy-M-d", "d/M/yy",
+            "d/M/yyyy", "d-M-yy", "d-M-yyyy"};
     private static final String[] timeformatStrings = {"h:m a", "hhmm a", "H:m", "HHmm"};
 
     /**
