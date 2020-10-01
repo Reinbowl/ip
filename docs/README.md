@@ -200,7 +200,7 @@ The following are acceptable time formats:
 
 # 4 SUMMARY
 Summary of the bot.
-### 4.1 Table of Commands
+## 4.1 Table of Commands
 Command | Command Description | Syntax  
 --------|---------------------|-------  
 bye | exits program | `bye`  
