@@ -201,14 +201,14 @@ The following are acceptable time formats:
 # 4 SUMMARY
 Summary of the bot.
 ## 4.1 Table of Commands
-Command | Command Description | Syntax  
---------|---------------------|-------  
-bye | exits program | `bye`  
-todo | adds a todo task | `todo [task description]`  
-deadline | adds a deadline task | `deadline [task description] /by [date] [time]`  
-event | adds an event task | `event [task description] /at [date] [time]`  
-list | list all tasks | `list`  
-list (date) | list all tasks on date | `list [date]`  
-done | marks task as done | `done [task index]`  
-delete | deletes task | `delete [task index]`  
-find | find keyword in tasks | `find [key]`  
+| Command | Command Description | Syntax |
+| --- | --- | --- |
+| bye | exits program | `bye` |
+| todo | adds a todo task | `todo [task description]` |
+| deadline | adds a deadline task | `deadline [task description] /by [date] [time]` |
+| event | adds an event task | `event [task description] /at [date] [time]` |
+| list | list all tasks | `list` |
+| list (date) | list all tasks on date | `list [date]` |
+| done | marks task as done | `done [task index]` |
+| delete | deletes task | `delete [task index]`| 
+| find | find keyword in tasks | `find [key]` |
