@@ -1,44 +1,59 @@
+No folder to store the save file! Hwold on, I can make wone...
+Lwooks like its your fwirst time using me! I will make a swave file!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                Hewwo! I'm UwU Bot
-              Hwere to hwelp you out
+Hewwo! I'm UwU Bot
+###      ###                  ###      ###
+###      ###                  ###      ###
+###      ###  ###        ###  ###      ###
+###      ###  ###   ##   ###  ###      ###
+ ##########   ###  ####  ###   ##########
+  ########     #####  #####     ########
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 What can I dwo fwor ywou?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-UwU looks like you have to borrow book
-Ywou now have 1 tasks left to doo
+UwU neww todo task added:
+[T][✕] borrow book
+Ywou now have 1 twotal tasks in the list.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Hwere is ywour list of tasks:
+Hwere is ywour list of 1 tasks:
 1. [T][✕] borrow book
-Can ywou doo the 1 remaining task?
-UwU Bot would like two help!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-OwO looks like return book needs two be dwone by Sunday
-Ywou now have 2 tasks left two do
+OwO new deadline twask added:
+[D][✕] return book (by: 2 Oct 2020 11:59 PM)
+Ywou now have 2 twotal tasks in the list.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Nyaa project meeting is hwappening on Mon 2-4pm better rwemembwer!
-Ywou now have 3 tasks left two do
+Nyaa upcwoming event added:
+[E][✕] project meeting (at: 10 Oct 2020 7:00 PM)
+Ywou now have 3 twotal tasks in the list.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-OwO looks like do homework needs two be dwone by no idea :3
-Ywou now have 4 tasks left two do
+OwO new deadline twask added:
+[D][✕] do homework (by: 25 Feb 2021 1:00 PM)
+Ywou now have 4 twotal tasks in the list.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Niasu! I'we mwarked thwis task as done:
-[D][✓] return book (by: Sunday)
-Ywou now have 3 tasks left to doo
+[D][✓] return book (by: 2 Oct 2020 11:59 PM)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Hwere is ywour list of tasks:
+All thwis task are on 10 Oct 2020:
+1. [E][✕] project meeting (at: 10 Oct 2020 7:00 PM)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hwere is ywour list of 4 tasks:
 1. [T][✕] borrow book
-2. [D][✓] return book (by: Sunday)
-3. [E][✕] project meeting (at: Mon 2-4pm)
-4. [D][✕] do homework (by: no idea :3)
-Can ywou doo the 3 remaining task?
-UwU Bot would like two help!
+2. [D][✓] return book (by: 2 Oct 2020 11:59 PM)
+3. [E][✕] project meeting (at: 10 Oct 2020 7:00 PM)
+4. [D][✕] do homework (by: 25 Feb 2021 1:00 PM)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OwO guess it's bwye bwye to this task:
+[D][✓] return book (by: 2 Oct 2020 11:59 PM)
+Ywou now have 3 twotal tasks in the list.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Bai Bai! See ywo swoon!
